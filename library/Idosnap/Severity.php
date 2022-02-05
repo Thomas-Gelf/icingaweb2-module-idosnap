@@ -70,7 +70,7 @@ abstract class Severity
 
     public function isHandled(): bool
     {
-        return $this->severity & (self::FLAG_HOST_ISSUE | self::FLAG_DOWNTIME | self::FLAG_ACK) > 0;
+        return ($this->severity & (self::FLAG_HOST_ISSUE | self::FLAG_DOWNTIME | self::FLAG_ACK)) > 0;
     }
 
     public function isHostProblem(): bool
