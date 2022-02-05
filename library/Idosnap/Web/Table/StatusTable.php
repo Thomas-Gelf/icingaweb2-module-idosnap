@@ -39,7 +39,7 @@ class StatusTable extends ZfQueryBasedTable
         return $this->db()->select()->union([
             $this->selectHosts(),
             $this->selectServices()
-        ], Select::SQL_UNION_ALL)->order('hostname')->order('service')->limit(50);
+        ], Select::SQL_UNION_ALL)->order('hostname')->order('service')->limit(40);
     }
 
     protected function selectHosts()
