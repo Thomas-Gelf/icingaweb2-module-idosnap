@@ -39,19 +39,22 @@ abstract class Severity
 
     public static function calculateSeverityForIdo($row): int
     {
-        $severity = static::normalizeIdoState($row->current_state) << self::SHIFT_FLAGS;
+        $state = static::normalizeIdoState($row->current_state);
+        $severity = $state << self::SHIFT_FLAGS;
 
         $flag = 0;
         if ($row->scheduled_downtime_depth > 0) {
             $flag |= self::FLAG_DOWNTIME;
         }
-        if ($row->problem_has_been_acknowledged) {
-            $flag |= self::FLAG_ACK;
+        if ($state !== 0) {
+            if ($row->problem_has_been_acknowledged) {
+                $flag |= self::FLAG_ACK;
+            }
+            if ($row->host_problem ?? false) {
+                $flag |= self::FLAG_HOST_ISSUE;
+            }
         }
-        if ($row->host_problem ?? false) {
-            $flag |= self::FLAG_HOST_ISSUE;
-        }
-        if ($flag === 0 && $severity > 0) {
+        if ($flag === 0 && $state > 0) {
             $flag = self::FLAG_NONE;
         }
 
