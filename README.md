@@ -22,14 +22,14 @@ Usage
 Once [installed](#Installation) and [configured](#Configuration), you'll find
 this module in your Icinga Web 2 **History** menu section:
 
-![Menu](doc/screenshot/01-Menu.png)
+![Menu](doc/screenshot/002-Menu.png)
 
 ### Create Snapshots
 
 Head on and create your very first Snapshot. Please give your Snapshots
 meaningful names, this makes your life easier later on: 
 
-![Create a Snapshot](doc/screenshot/02-Create_a_Snapshot.png)
+![Create a Snapshot](doc/screenshot/011-Create_a_Snapshot.png)
 
 ### Inspect Snapshots
 
@@ -42,35 +42,62 @@ problem is considered being "handled".
 You can select any snapshot and navigate through its objects. A click on any
 object forwards you to the related Monitoring Details page:
 
-![Snapshot Details](doc/screenshot/03-Snapshot-Details.png)
+![Snapshot Details](doc/screenshot/012-Snapshot-Details.png)
 
 ### Compare Snapshots
 
 This is the main essential feature provided by this module. When visiting a
 Snapshot, click **Diff**...
 
-![Click Diff](doc/screenshot/04-Click_Diff.png)
+![Click Diff](doc/screenshot/021-Click_Diff.png)
 
 ...and choose one of your other Snapshots:
 
-![Compare Snapshots](doc/screenshot/05-Compare_Snapshots.png)
+![Compare Snapshots](doc/screenshot/022-Compare_Snapshots.png)
 
 It doesn't matter whether you choose the older or the recent one first, the
 Diff will always be calculated and shown in the correct chronological order.
 Objects that have been removed (or created) between two Snapshots will also
 be shown:
 
-![Snapshot Diff](doc/screenshot/06-Snapshot_Diff.png)
+![Snapshot Diff](doc/screenshot/023-Snapshot_Diff.png)
 
 In case there are no Differences, you're being told:
 
-![Identical Snapshots](doc/screenshot/07-Identical_Snapshots.png)
+![Identical Snapshots](doc/screenshot/024-Identical_Snapshots.png)
+
+### Status Details: handled problems and related changes
+
+Colors and Icons are giving more details about the related Monitoring State.
+
+#### A problem can be Acknowledged
+
+![Problem Acknowledged](doc/screenshot/031-Problem_Acknowledged.png)
+
+#### A Downtime might have been configured and activated
+
+![Active Downtime](doc/screenshot/032-Active_Downtime.png)
+
+#### Service Problems are muted, when their Host is down
+
+![Related Host Problem](doc/screenshot/033-Related_Host_Problem.png)
+
+#### Host recovery might then trigger new alarms
+
+This example shows a diff, where Services formerly been muted by a Host problem
+start alarming again, after the Host recovers:
+
+![Problem by Recovery](doc/screenshot/034-Problem_by_recovery.png)
+
+#### Removed objects are visible and marked as such
+
+![Object removed](doc/screenshot/035-Object_removed.png)
 
 ### Delete outdated Snapshots
 
 Once you no longer need older Snapshots, please delete them:
 
-![Delete Snapshot](doc/screenshot/08-Delete_Snapshot.png)
+![Delete Snapshot](doc/screenshot/071-Delete_Snapshot.png)
 
 This saves disk space and computing power.
 
@@ -150,9 +177,9 @@ Don't worry, when something goes wrong you're usually presented meaningful
 error messages:
 
 #### No DB configured
-![Error - No DB configured](doc/screenshot/09-Error_no_db_configured.png)
+![Error - No DB configured](doc/screenshot/091-Error_no_db_configured.png)
 
 #### No such resource
-![Error - No such resource](doc/screenshot/10-Error_no_such_resource.png)
+![Error - No such resource](doc/screenshot/092-Error_no_such_resource.png)
 
 Read carefully, they usually point you to the right direction.
