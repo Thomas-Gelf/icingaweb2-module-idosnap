@@ -1,0 +1,8 @@
+Name: IDO Status Snapshot
+Version: 1.0.0
+Depends: ipl (>=0.5.0), incubator (>=0.12.0), reactbundle (>=0.8.0)
+Description: IDO Status Snapshot
+ This Icinga module allows taking multiple Snapshots of current Host and
+ Service Monitoring Status in your Icinga IDO database. It's main purpose
+ is being a simplistic tool allowing to compare system health across two
+ points in time.
