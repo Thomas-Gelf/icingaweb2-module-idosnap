@@ -3,8 +3,6 @@
 namespace Icinga\Module\Idosnap\Web\Table;
 
 use gipfl\IcingaWeb2\Icon;
-use Icinga\Module\Idosnap\HostSeverity;
-use Icinga\Module\Idosnap\ServiceSeverity;
 use ipl\Html\Html;
 use ipl\Html\HtmlElement;
 use ipl\Html\Table;
@@ -42,7 +40,8 @@ class StatusDiffRowRenderer
 
         return $table::row([[
             $changeInfo,
-            $link
+            $link,
+            SnapshotRowHelper::getSeverityFlagIcons($type, $row->right_severity)
         ]], ['class' => SnapshotRowHelper::extendClassesForSeverity($type, $row->left_severity)]);
     }
 

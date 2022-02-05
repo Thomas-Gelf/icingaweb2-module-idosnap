@@ -25,7 +25,10 @@ class StatusRowRenderer
             $link = MonitoringLink::linkService($row->hostname, $row->service);
         }
 
-        return $table::row([$link], ['class' =>  SnapshotRowHelper::extendClassesForSeverity($type, $row->severity)]);
+        return $table::row([
+            $link,
+            SnapshotRowHelper::getSeverityFlagIcons($type, $row->severity)
+        ], ['class' =>  SnapshotRowHelper::extendClassesForSeverity($type, $row->severity)]);
     }
 
     protected function prepareFakeHostRow($row)
