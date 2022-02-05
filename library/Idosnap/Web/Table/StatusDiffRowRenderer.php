@@ -35,7 +35,7 @@ class StatusDiffRowRenderer
             $changeInfo = [
                 Icon::create('right-big'),
                 Html::tag('div', [
-                    'class' => $this->extendClassesForSeverity($type, $row->right_severity)
+                    'class' => SnapshotRowHelper::extendClassesForSeverity($type, $row->right_severity)
                 ]),
             ];
         }
@@ -43,26 +43,7 @@ class StatusDiffRowRenderer
         return $table::row([[
             $changeInfo,
             $link
-        ]], ['class' => $this->extendClassesForSeverity($type, $row->left_severity)]);
-    }
-
-    protected function extendClassesForSeverity($type, $severity): array
-    {
-        if ($severity === null) {
-            return [$type, 'missing'];
-        }
-
-        if ($type === 'host') {
-            $severity = HostSeverity::fromDbValue($severity);
-        } else {
-            $severity = ServiceSeverity::fromDbValue($severity);
-        }
-        $classes = [$type, $severity->getName()];
-        if ($severity->isHandled()) {
-            $classes[] = 'handled';
-        }
-
-        return $classes;
+        ]], ['class' => SnapshotRowHelper::extendClassesForSeverity($type, $row->left_severity)]);
     }
 
     protected function prepareFakeHostRow($row)

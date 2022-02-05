@@ -2,8 +2,6 @@
 
 namespace Icinga\Module\Idosnap\Web\Table;
 
-use Icinga\Module\Idosnap\HostSeverity;
-use Icinga\Module\Idosnap\ServiceSeverity;
 use ipl\Html\HtmlElement;
 use ipl\Html\Table;
 
@@ -16,24 +14,18 @@ class StatusRowRenderer
     {
         if ($row->service === null) {
             $this->firstRow = false;
-            $severity = HostSeverity::fromDbValue($row->severity);
-            $classes = ['host'];
+            $type = 'host';
             $link = MonitoringLink::linkHost($row->hostname);
         } else {
             if ($this->firstRow) {
                 $this->firstRow = false;
                 $table->add($this->render($this->prepareFakeHostRow($row), $table));
             }
-            $severity = ServiceSeverity::fromDbValue($row->severity);
-            $classes = ['service'];
+            $type = 'service';
             $link = MonitoringLink::linkService($row->hostname, $row->service);
         }
-        $classes[] = $severity->getName();
-        if ($severity->isHandled()) {
-            $classes[] = 'handled';
-        }
 
-        return $table::row([$link,], ['class' => $classes]);
+        return $table::row([$link], ['class' =>  SnapshotRowHelper::extendClassesForSeverity($type, $row->severity)]);
     }
 
     protected function prepareFakeHostRow($row)
