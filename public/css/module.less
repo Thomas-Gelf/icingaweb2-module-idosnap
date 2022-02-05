@@ -1,0 +1,125 @@
+.gipfl-action-bar i {
+  color: @icinga-blue;
+  }
+.gipfl-action-bar form.gipfl-inline-form {
+  input[type=submit]:hover, input[type=submit]:focus {
+    color: @icinga-blue;
+    background: unset;
+    text-decoration: underline;
+  }
+}
+div.host {
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 0.25em;
+  margin-top: 0.3em;
+  margin-left: 0.5em;
+  margin-right: 1em;
+}
+div.service {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.25em;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 1em;
+}
+table.snapshots-table {
+  td:last-of-type {
+    text-align: right;
+  }
+}
+table.status-table {
+  tbody tr {
+    position: relative;
+  }
+  i:before {
+    line-height: 2em;
+    vertical-align: top;
+  }
+  tbody tr td:first-of-type {
+    &:before {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 0.6em;
+      width: 1em;
+      height: 1em;
+      border-radius: 0.25em;
+      background-color: @gray-lightest;
+    }
+  }
+  td {
+    line-height: 2em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+  }
+  tbody tr.host {
+    border-bottom-color: @gray;
+    td {
+      padding-top: 1em;
+    }
+  }
+
+  tr.host td:first-of-type {
+    padding-left: 2.5em;
+    font-weight: bold;
+    &:before {
+      top: 1.3em;
+      left: 0.5em;
+      width: 1.4em;
+      height: 1.4em;
+    }
+  }
+  tr.host.up td:first-of-type:before, div.host.up {
+    background-color: @color-ok;
+  }
+  tr.host.down td:first-of-type:before, div.host.down {
+    background-color: @color-critical;
+  }
+  tr.host.down.handled td:first-of-type:before, div.host.down.handled {
+    background-color: @color-critical-handled;
+  }
+  tr.host.pending td:first-of-type:before, div.host.pending {
+    background-color: @color-pending;
+  }
+  tr.host.missing td:first-of-type:before, div.host.missing {
+    background-color: @text-color;
+  }
+
+  tr.service td:first-of-type {
+    padding-left: 4em;
+    &:before {
+      left: 2.6em;
+    }
+  }
+  tr.service.ok td:first-of-type:before, div.service.ok {
+    background-color: @color-ok;
+  }
+  tr.service.warning td:first-of-type:before, div.service.warning {
+    background-color: @color-warning;
+  }
+  tr.service.warning.handled td:first-of-type:before, div.service.handled {
+    background-color: @color-warning-handled;
+  }
+  tr.service.critical td:first-of-type:before, div.service.critical {
+    background-color: @color-critical;
+  }
+  tr.service.critical.handled td:first-of-type:before, div.service.critical.handled {
+    background-color: @color-critical-handled;
+  }
+  tr.service.unknown td:first-of-type:before, div.service.unknown {
+    background-color: @color-unknown;
+  }
+  tr.service.unknown.handled td:first-of-type:before, div.service.unknown.handled {
+    background-color: @color-unknown-handled;
+  }
+  tr.service.pending td:first-of-type:before, div.service.pending {
+    background-color: @color-pending;
+  }
+  tr.service.missing td:first-of-type:before, div.service.missing {
+    background-color: @text-color;
+  }
+}
