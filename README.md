@@ -123,7 +123,7 @@ Installation
 
 ```shell
 # You can customize these settings, but we suggest to stick with our defaults:
-MODULE_VERSION="1.0.0"
+MODULE_VERSION="1.1.0"
 ICINGAWEB_MODULEPATH="/usr/share/icingaweb2/modules"
 REPO_URL="https://github.com/Thomas-Gelf/icingaweb2-module-idosnap"
 TARGET_DIR="${ICINGAWEB_MODULEPATH}/idosnap"
@@ -202,3 +202,15 @@ error messages:
 ![Error - No such resource](doc/screenshot/092-Error_no_such_resource.png)
 
 Read carefully, they usually point you to the right direction.
+
+Changes
+-------
+
+### v1.1.0
+
+* FIX: in a Diff, object names where missing or incorrect for newly created objects
+* FEATURE: Director Deployment Hook for automated Snapshots (#1)
+
+### v1.0.0
+
+First release
