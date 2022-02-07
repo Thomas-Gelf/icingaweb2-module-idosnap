@@ -12,6 +12,10 @@ The larger your setup, the more this might become helpful:
 * when running Disaster Recovery tests
 * before, during and after Migration processes
 
+In addition to manual Snapshots, this module can be configured to take a Snapshot
+before every [Icinga Director](https://github.com/Icinga/icingaweb2-module-director#readme)
+Deployment.
+
 Sounds promising? Then read on!
 
 Usage
@@ -163,13 +167,28 @@ Please make sure that you choose `utf8mb4` as an encoding.
 
 ### Refer the configured DB resource
 
-Now you're ready to populate `/etc/icingaweb2/modules/eventtracker/config.ini`,
+Now you're ready to populate `/etc/icingaweb2/modules/idosnap/config.ini`,
 please reference your newly configured DB resource:
 
 ```ini
 [db]
 resource = "IDO Snap"
 ```
+
+### Icinga Director Integration
+
+In case you want to take a Snapshot before every Director Deployment, the
+following settings are available:
+
+```ini
+[director]
+snap_before_deployment = yes
+; max_snapshots = 30
+```
+
+Automated Snapshots are disabled by default. Only the most recent `max_snapshots`
+Director-related Snapshots are preserved, older ones are purged. This does not
+affect your manual Snapshots, they'll persist unless you delete them.
 
 ### When something goes wrong
 
