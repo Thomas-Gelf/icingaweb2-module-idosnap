@@ -41,7 +41,7 @@ class SnapshotDiff
     protected function prepareHostDiff(): Select
     {
         return $this->prepareDiffForTable(Schema::TABLE_HOSTS, [
-            'hostname' => 'hostname',
+            'hostname' => 'COALESCE(l.hostname, r.hostname)',
             'service'  => '(NULL)',
             'left_host_severity'  => '(l.severity)',
             'right_host_severity' => '(r.severity)',
@@ -56,7 +56,7 @@ class SnapshotDiff
     {
         return $this->prepareDiffForTable(Schema::TABLE_SERVICES, [
             'hostname' => 'COALESCE(lh.hostname, rh.hostname)',
-            'service'  => 'service',
+            'service'  => 'COALESCE(l.service, r.service)',
             'left_host_severity'  => '(lh.severity)',
             'right_host_severity' => '(rh.severity)',
             'ido_host_object_id'  => 'ido_host_object_id',
