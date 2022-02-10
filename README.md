@@ -123,7 +123,7 @@ Installation
 
 ```shell
 # You can customize these settings, but we suggest to stick with our defaults:
-MODULE_VERSION="1.1.0"
+MODULE_VERSION="1.1.1"
 ICINGAWEB_MODULEPATH="/usr/share/icingaweb2/modules"
 REPO_URL="https://github.com/Thomas-Gelf/icingaweb2-module-idosnap"
 TARGET_DIR="${ICINGAWEB_MODULEPATH}/idosnap"
