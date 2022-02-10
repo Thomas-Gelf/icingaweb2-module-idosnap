@@ -206,6 +206,10 @@ Read carefully, they usually point you to the right direction.
 Changes
 -------
 
+### v1.1.1
+
+* FIX: respect Director snapshot amount configuration (#3)
+
 ### v1.1.0
 
 * FIX: in a Diff, object names where missing or incorrect for newly created objects

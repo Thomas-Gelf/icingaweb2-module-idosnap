@@ -36,13 +36,13 @@ class Deployment extends DeploymentHook
         } catch (Exception $exception) {
             // Silently ignore, we do not want to interrupt the deployment
         }
-        $max = (int) min(1, $config->get('director', 'max_snapshots', 30));
+        $max = (int) max(1, $config->get('director', 'max_snapshots', 30));
         try {
             $timestamps = $db->fetchCol(
                 $db->select()->from(Schema::TABLE_SNAPSHOTS, 'ts_created')
                     ->where('label LIKE ?', self::PREFIX . '%')
                     ->order('ts_created DESC')
-                    ->limit($max + 1)
+                    ->limit($max)
             );
             if (count($timestamps) > $max) {
                 $last = $timestamps[$max];
