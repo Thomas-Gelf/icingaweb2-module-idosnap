@@ -206,6 +206,10 @@ Read carefully, they usually point you to the right direction.
 Changes
 -------
 
+### v1.1.2
+
+* FIX: Director snapshot configuration cleanup has been ignored (#4)
+
 ### v1.1.1
 
 * FIX: respect Director snapshot amount configuration (#3)

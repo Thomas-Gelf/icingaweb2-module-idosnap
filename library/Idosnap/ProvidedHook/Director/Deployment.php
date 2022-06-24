@@ -42,13 +42,13 @@ class Deployment extends DeploymentHook
                 $db->select()->from(Schema::TABLE_SNAPSHOTS, 'ts_created')
                     ->where('label LIKE ?', self::PREFIX . '%')
                     ->order('ts_created DESC')
-                    ->limit($max)
+                    ->limit($max + 1)
             );
             if (count($timestamps) > $max) {
                 $last = $timestamps[$max];
                 $db->delete(
                     Schema::TABLE_SNAPSHOTS,
-                    $db->quoteInto('ts_created < ' . $last . ' AND label LIKE ?', self::PREFIX . '%')
+                    $db->quoteInto('ts_created <= ' . $last . ' AND label LIKE ?', self::PREFIX . '%')
                 );
             }
         } catch (Exception $exception) {
